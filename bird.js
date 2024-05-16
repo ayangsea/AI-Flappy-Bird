@@ -27,7 +27,7 @@ class Bird {
         let closest = null;
         let closestD = Infinity;
         for (let i = 0; i < pipes.length; i++) {
-            let d = pipes[i].x - this.x;
+            let d = pipes[i].x + pipes[i].w - this.x;
             if (d < closestD && d > 0) {
                 closest = pipes[i];
                 closestD = d;
@@ -39,7 +39,7 @@ class Bird {
         inputs[1] = closest.top / height;
         inputs[2] = closest.bottom / height;
         inputs[3] = closest.x / width;
-        inputs[4] = this.velocity;
+        inputs[4] = this.velocity / 10;
 
         let output = this.brain.predict(inputs)
 

@@ -1,5 +1,5 @@
 function Pipe() {
-    this.gapSize = 200;
+    this.gapSize = 120;
     this.gapHeight = random(this.gapSize / 2, height - this.gapSize / 2)
     this.top = this.gapHeight - this.gapSize / 2
     this.bottom = this.gapHeight + this.gapSize / 2
