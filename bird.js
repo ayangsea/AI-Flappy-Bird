@@ -70,6 +70,6 @@ class Bird {
     }
 
     up() {
-        this.velocity = -10;
+        this.velocity += this.lift;
     }
 }

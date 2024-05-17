@@ -23,6 +23,8 @@ function setup() {
   highestScoringBirdButton.mousePressed(runHighestScoringBird);
   let resumeTrainingButton = createButton('resume training');
   resumeTrainingButton.mousePressed(resumeTraining);
+  let loadBirdButton = createButton('load bird');
+  loadBirdButton.mousePressed(loadBird);
 }
 
 function draw() {
@@ -96,4 +98,21 @@ function resumeTraining() {
   birds = storedBirds.splice();
   storedBirds = [];
   trainingMode = true;
+}
+
+function loadBird() {
+  let brainJSON = loadJSON("bird.json");
+  let birdBrain = NeuralNetwork.deserialize(brainJSON)
+  storedBirds = birds.splice();
+  let loadedBird = new Bird(birdBrain);
+  birds = [loadedBird];
+}
+
+function keyPressed() {
+  if (key == 's') {
+    let json = highestScoringBird.brain.serialize();
+    //save(json, 'bird.json');
+    saveJSON(highestScoringBird.brain, 'bird.json')
+    console.log(json);
+  }
 }
