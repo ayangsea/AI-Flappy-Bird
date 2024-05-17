@@ -10,6 +10,7 @@ let currentHighestScore = 0;
 let highestEverScore = 0;
 let highestScoringBird;
 let trainingMode = true;
+let generation = 0;
 
 function setup() {
   createCanvas(1000, 600);
@@ -30,6 +31,7 @@ function setup() {
 function draw() {
   background(0);
   fill('white')
+  text('generation: ' + generation, 0, height - 42)
   text('current highest score: ' + currentHighestScore, 0, height - 25);
   text('highest ever score: ' + highestEverScore, 0, height - 8);
   for (let n = 0; n < slider.value(); n++) {
@@ -61,6 +63,7 @@ function draw() {
 
     if (birds.length == 0 && trainingMode) {
       nextGeneration();
+      generation++;
       pipes = [];
       counter = 0;
       currentHighestScore = 0;
